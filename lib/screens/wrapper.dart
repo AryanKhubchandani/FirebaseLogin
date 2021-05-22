@@ -1,5 +1,5 @@
-import 'package:firebase_login/screens/authentication.dart';
-import 'package:firebase_login/screens/home.dart';
+import 'package:firebase_login/screens/authentication/authentication.dart';
+import 'package:firebase_login/screens/home/home.dart';
 import 'package:flutter/material.dart';
 
 class Wrapper extends StatelessWidget {
