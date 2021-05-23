@@ -32,6 +32,17 @@ class AuthService {
   // sign in using OTP
 
   // register using email and password
+  Future registerEnP(String email, String password) async {
+    try {
+      UserCredential result = await _auth.createUserWithEmailAndPassword(
+          email: email.trim(), password: password.trim());
+      User user = result.user;
+      return _fbUser(user);
+    } catch (e) {
+      print(e.toString());
+      return null;
+    }
+  }
 
   // register using google
 
