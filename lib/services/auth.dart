@@ -61,8 +61,6 @@ class AuthService {
     }
   }
 
-  // sign in using OTP
-
   // register using email and password
   Future registerEnP(String email, String password) async {
     try {
@@ -75,10 +73,6 @@ class AuthService {
       return null;
     }
   }
-
-  // register using google
-
-  // register using OTP
 
   // sign out
   Future signOut() async {

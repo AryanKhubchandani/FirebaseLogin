@@ -1,3 +1,4 @@
+import 'package:firebase_login/screens/authentication/sign_in_using_no.dart';
 import 'package:firebase_login/services/auth.dart';
 import 'package:flutter/material.dart';
 
@@ -16,6 +17,7 @@ class _SignInState extends State<SignIn> {
   String email = '';
   String password = '';
   String error = '';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -80,12 +82,20 @@ class _SignInState extends State<SignIn> {
                 },
               ),
               TextButton(
-                  onPressed: () async {
-                    await _auth.signInGoogle().then((userCredential) => {
-                          setState(() => {userCredential})
-                        });
-                  },
-                  child: Text("Sign In With Google")),
+                onPressed: () async {
+                  await _auth.signInGoogle().then((userCredential) => {
+                        setState(() => {userCredential})
+                      });
+                },
+                child: Text("Sign In With Google"),
+              ),
+              ElevatedButton.icon(
+                icon: Icon(Icons.person),
+                label: Text("Sign In using number"),
+                onPressed: () {
+                  SignInNo();
+                },
+              ),
               SizedBox(height: 20.0),
               Text(
                 error,
