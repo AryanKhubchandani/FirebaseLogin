@@ -19,7 +19,18 @@ class Home extends StatelessWidget {
           ),
         ],
       ),
-      backgroundColor: Colors.white,
+      body: Container(
+          padding: EdgeInsets.all(80),
+          alignment: Alignment.center,
+          child: Text(
+            "You have successfully logged in!",
+            style: TextStyle(
+              color: Colors.brown,
+              fontWeight: FontWeight.bold,
+              fontSize: 40,
+            ),
+          )),
+      backgroundColor: Colors.pink[50],
     );
   }
 }

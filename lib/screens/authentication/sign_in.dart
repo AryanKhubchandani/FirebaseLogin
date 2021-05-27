@@ -1,4 +1,5 @@
 import 'package:firebase_login/screens/authentication/sign_in_using_no.dart';
+import 'package:firebase_login/screens/home/home.dart';
 import 'package:firebase_login/services/auth.dart';
 import 'package:flutter/material.dart';
 
@@ -21,9 +22,9 @@ class _SignInState extends State<SignIn> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.pink[50],
       appBar: AppBar(
-        backgroundColor: Colors.black54,
+        backgroundColor: Colors.brown,
         elevation: 0.0,
         title: Text('Sign In'),
         actions: <Widget>[
@@ -92,8 +93,8 @@ class _SignInState extends State<SignIn> {
               ElevatedButton.icon(
                 icon: Icon(Icons.person),
                 label: Text("Sign In using number"),
-                onPressed: () {
-                  SignInNo();
+                onPressed: () async {
+                  return SignInNo();
                 },
               ),
               SizedBox(height: 20.0),

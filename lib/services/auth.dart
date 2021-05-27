@@ -6,13 +6,13 @@ class AuthService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
   // User Object based on FirebaseUser
-  MyUser _fbUser(User user) {
+  MyUser fbUser(User user) {
     return user != null ? MyUser(uid: user.uid) : null;
   }
 
   // auth change user stream
   Stream<MyUser> get checkUser {
-    return _auth.authStateChanges().map(_fbUser);
+    return _auth.authStateChanges().map(fbUser);
   }
 
   // sign in anon
@@ -20,7 +20,7 @@ class AuthService {
     try {
       UserCredential result = await _auth.signInAnonymously();
       User user = result.user;
-      return _fbUser(user);
+      return fbUser(user);
     } catch (e) {
       print(e.toString());
       return null;
@@ -33,7 +33,7 @@ class AuthService {
       UserCredential result = await _auth.signInWithEmailAndPassword(
           email: email.trim(), password: password.trim());
       User user = result.user;
-      return _fbUser(user);
+      return fbUser(user);
     } catch (e) {
       print(e.toString());
       return null;
@@ -67,7 +67,7 @@ class AuthService {
       UserCredential result = await _auth.createUserWithEmailAndPassword(
           email: email.trim(), password: password.trim());
       User user = result.user;
-      return _fbUser(user);
+      return fbUser(user);
     } catch (e) {
       print(e.toString());
       return null;
