@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_login/models/user.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 class AuthService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
@@ -40,6 +41,25 @@ class AuthService {
   }
 
   // sign in using google
+  Future signInGoogle() async {
+    try {
+      final GoogleSignInAccount googleUser = await GoogleSignIn().signIn();
+      final GoogleSignInAuthentication googleAuth =
+          await googleUser.authentication;
+
+      final GoogleAuthCredential googleAuthCredential =
+          GoogleAuthProvider.credential(
+        accessToken: googleAuth.accessToken,
+        idToken: googleAuth.idToken,
+      );
+      UserCredential googleResult =
+          await _auth.signInWithCredential(googleAuthCredential);
+      return googleResult;
+    } catch (e) {
+      print(e.toString());
+      return null;
+    }
+  }
 
   // sign in using OTP
 
