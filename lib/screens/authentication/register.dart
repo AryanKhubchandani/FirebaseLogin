@@ -23,8 +23,12 @@ class _RegisterState extends State<Register> {
       appBar: AppBar(
         backgroundColor: Colors.yellow[700],
         elevation: 0.0,
-        title: Text('Sign Up'),
+        title: Text(
+          'SIGN UP',
+          style: TextStyle(color: Colors.white70, fontSize: 28),
+        ),
       ),
+      resizeToAvoidBottomInset: false,
       body: Container(
         padding: EdgeInsets.fromLTRB(50, 20, 50, 5),
         child: Form(
@@ -34,7 +38,16 @@ class _RegisterState extends State<Register> {
               SizedBox(height: 40.0),
               TextFormField(
                 decoration: InputDecoration(
-                  hintText: "Email",
+                  labelText: "Email",
+                  labelStyle: TextStyle(color: Colors.white),
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(25.0),
+                    borderSide: BorderSide(color: Colors.yellow[800], width: 2),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(25.0),
+                    borderSide: BorderSide(color: Colors.yellow[600], width: 2),
+                  ),
                 ),
                 validator: (val) => val.isEmpty ? "Enter an email" : null,
                 onChanged: (val) {
@@ -45,7 +58,16 @@ class _RegisterState extends State<Register> {
               SizedBox(height: 20.0),
               TextFormField(
                 decoration: InputDecoration(
-                  hintText: "Password",
+                  labelText: "Password",
+                  labelStyle: TextStyle(color: Colors.white),
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(25.0),
+                    borderSide: BorderSide(color: Colors.yellow[800], width: 2),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(25.0),
+                    borderSide: BorderSide(color: Colors.yellow[600], width: 2),
+                  ),
                 ),
                 obscureText: true,
                 validator: (val) => val.length < 6

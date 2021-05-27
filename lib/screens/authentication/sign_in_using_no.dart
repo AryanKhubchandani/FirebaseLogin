@@ -83,7 +83,10 @@ class _SignInNoState extends State<SignInNo> {
     return Scaffold(
       backgroundColor: Colors.yellow[700],
       appBar: AppBar(
-        title: Text("Sign In using Number"),
+        title: Text(
+          "SIGN IN USING NUMBER",
+          style: TextStyle(color: Colors.white70, fontSize: 24),
+        ),
         elevation: 0.0,
         backgroundColor: Colors.yellow[700],
       ),
@@ -98,10 +101,23 @@ class _SignInNoState extends State<SignInNo> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
+                  SizedBox(height: 20.0),
                   TextFormField(
                     controller: _phoneNumberController,
-                    decoration: const InputDecoration(
-                        labelText: 'Phone number (+xx xxx-xxx-xxxx)'),
+                    decoration: InputDecoration(
+                      labelText: 'Phone number (+xx xxx-xxx-xxxx)',
+                      labelStyle: TextStyle(color: Colors.white),
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(25.0),
+                        borderSide:
+                            BorderSide(color: Colors.yellow[800], width: 2),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(25.0),
+                        borderSide:
+                            BorderSide(color: Colors.yellow[600], width: 2),
+                      ),
+                    ),
                     validator: (value) {
                       if (value.isEmpty) {
                         showSnackbar("Enter valid Number");
@@ -110,6 +126,7 @@ class _SignInNoState extends State<SignInNo> {
                     },
                     style: TextStyle(color: Colors.white),
                   ),
+                  SizedBox(height: 10.0),
                   Container(
                     padding: const EdgeInsets.symmetric(vertical: 30.0),
                     alignment: Alignment.center,
@@ -128,10 +145,23 @@ class _SignInNoState extends State<SignInNo> {
                       ),
                     ),
                   ),
+                  SizedBox(height: 30.0),
                   TextFormField(
                     controller: _smsController,
-                    decoration:
-                        const InputDecoration(labelText: 'Verification code'),
+                    decoration: InputDecoration(
+                      labelText: 'Verification code',
+                      labelStyle: TextStyle(color: Colors.white),
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(25.0),
+                        borderSide:
+                            BorderSide(color: Colors.yellow[800], width: 2),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(25.0),
+                        borderSide:
+                            BorderSide(color: Colors.yellow[600], width: 2),
+                      ),
+                    ),
                     style: TextStyle(color: Colors.white),
                   ),
                   Container(

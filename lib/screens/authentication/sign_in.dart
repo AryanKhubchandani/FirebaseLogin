@@ -3,6 +3,7 @@ import 'package:firebase_login/screens/home/home.dart';
 import 'package:flutter_signin_button/flutter_signin_button.dart';
 import 'package:firebase_login/services/auth.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class SignIn extends StatefulWidget {
   final Function toggleView;
@@ -27,8 +28,12 @@ class _SignInState extends State<SignIn> {
       appBar: AppBar(
         backgroundColor: Colors.yellow[700],
         elevation: 0.0,
-        title: Text('Sign In'),
+        title: Text(
+          'SIGN IN',
+          style: TextStyle(color: Colors.white70, fontSize: 28),
+        ),
       ),
+      resizeToAvoidBottomInset: false,
       body: Container(
         padding: EdgeInsets.fromLTRB(50, 20, 50, 5),
         child: Form(
@@ -38,7 +43,16 @@ class _SignInState extends State<SignIn> {
               SizedBox(height: 40.0),
               TextFormField(
                 decoration: InputDecoration(
-                  hintText: "Email",
+                  labelText: "Email",
+                  labelStyle: TextStyle(color: Colors.white),
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(25.0),
+                    borderSide: BorderSide(color: Colors.yellow[800], width: 2),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(25.0),
+                    borderSide: BorderSide(color: Colors.yellow[600], width: 2),
+                  ),
                 ),
                 validator: (val) => val.isEmpty ? "Enter an Email" : null,
                 onChanged: (val) {
@@ -49,7 +63,16 @@ class _SignInState extends State<SignIn> {
               SizedBox(height: 20.0),
               TextFormField(
                 decoration: InputDecoration(
-                  hintText: "Password",
+                  labelText: "Password",
+                  labelStyle: TextStyle(color: Colors.white),
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(25.0),
+                    borderSide: BorderSide(color: Colors.yellow[800], width: 2),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(25.0),
+                    borderSide: BorderSide(color: Colors.yellow[600], width: 2),
+                  ),
                 ),
                 obscureText: true,
                 validator: (val) => val.length < 6
@@ -84,22 +107,37 @@ class _SignInState extends State<SignIn> {
                 ),
               ),
               SizedBox(height: 30.0),
-              Text("-OR-"),
-              SizedBox(height: 20.0),
-              SignInButton(
-                Buttons.Google,
-                onPressed: () async {
-                  await _auth.signInGoogle().then((userCredential) => {
-                        setState(() => {userCredential})
-                      });
-                },
+              Text(
+                "-OR-",
+                style: TextStyle(color: Colors.white, fontSize: 20),
+              ),
+              SizedBox(height: 30.0),
+              ConstrainedBox(
+                constraints: BoxConstraints.tightFor(width: 200, height: 40),
+                child: ElevatedButton.icon(
+                  icon: FaIcon(
+                    FontAwesomeIcons.google,
+                    color: Colors.white,
+                  ),
+                  label: Text("Sign In with Google",
+                      style: TextStyle(color: Colors.white, fontSize: 14)),
+                  onPressed: () async {
+                    await _auth.signInGoogle().then((userCredential) => {
+                          setState(() => {userCredential})
+                        });
+                  },
+                  style: ElevatedButton.styleFrom(
+                    primary: Colors.yellow[700],
+                    side: BorderSide(color: Colors.yellow[900], width: 2),
+                  ),
+                ),
               ),
               SizedBox(height: 10.0),
               ConstrainedBox(
-                constraints: BoxConstraints.tightFor(width: 220, height: 40),
+                constraints: BoxConstraints.tightFor(width: 200, height: 40),
                 child: ElevatedButton.icon(
-                  icon: Icon(
-                    Icons.person,
+                  icon: FaIcon(
+                    FontAwesomeIcons.phone,
                     color: Colors.white,
                   ),
                   label: Text("Sign In using Number",
