@@ -28,18 +28,9 @@ class _SignInState extends State<SignIn> {
         backgroundColor: Colors.yellow[700],
         elevation: 0.0,
         title: Text('Sign In'),
-        actions: <Widget>[
-          TextButton.icon(
-            icon: Icon(Icons.person),
-            label: Text("Register"),
-            onPressed: () {
-              widget.toggleView();
-            },
-          ),
-        ],
       ),
       body: Container(
-        padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 50.0),
+        padding: EdgeInsets.fromLTRB(50, 20, 50, 5),
         child: Form(
           key: _formKey,
           child: Column(
@@ -53,6 +44,7 @@ class _SignInState extends State<SignIn> {
                 onChanged: (val) {
                   setState(() => email = val.trim());
                 },
+                style: TextStyle(color: Colors.white),
               ),
               SizedBox(height: 20.0),
               TextFormField(
@@ -66,6 +58,7 @@ class _SignInState extends State<SignIn> {
                 onChanged: (val) {
                   setState(() => password = val.trim());
                 },
+                style: TextStyle(color: Colors.white),
               ),
               SizedBox(height: 50.0),
               ConstrainedBox(
@@ -103,20 +96,21 @@ class _SignInState extends State<SignIn> {
               ),
               SizedBox(height: 10.0),
               ConstrainedBox(
-                constraints: BoxConstraints.tightFor(width: 220, height: 35),
+                constraints: BoxConstraints.tightFor(width: 220, height: 40),
                 child: ElevatedButton.icon(
                   icon: Icon(
                     Icons.person,
-                    color: Colors.black,
+                    color: Colors.white,
                   ),
                   label: Text("Sign In using Number",
-                      style: TextStyle(color: Colors.black, fontSize: 14)),
+                      style: TextStyle(color: Colors.white, fontSize: 14)),
                   onPressed: () {
                     Navigator.of(context).push(
                         MaterialPageRoute(builder: (context) => SignInNo()));
                   },
                   style: ElevatedButton.styleFrom(
-                    primary: Colors.white,
+                    primary: Colors.yellow[700],
+                    side: BorderSide(color: Colors.yellow[900], width: 2),
                   ),
                 ),
               ),
@@ -124,7 +118,30 @@ class _SignInState extends State<SignIn> {
               Text(
                 error,
                 style: TextStyle(color: Colors.red, fontSize: 20.0),
-              )
+              ),
+              Spacer(),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    "Don't have an account?",
+                    style: TextStyle(color: Colors.white),
+                  ),
+                  TextButton.icon(
+                    icon: Icon(
+                      Icons.person,
+                      color: Colors.white,
+                    ),
+                    label: Text(
+                      "Register",
+                      style: TextStyle(color: Colors.white),
+                    ),
+                    onPressed: () {
+                      widget.toggleView();
+                    },
+                  ),
+                ],
+              ),
             ],
           ),
         ),

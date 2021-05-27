@@ -81,79 +81,81 @@ class _SignInNoState extends State<SignInNo> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.yellow[700],
+      appBar: AppBar(
+        title: Text("Sign In using Number"),
+        elevation: 0.0,
         backgroundColor: Colors.yellow[700],
-        appBar: AppBar(
-          title: Text("Sign In using Number"),
-          backgroundColor: Colors.brown,
-        ),
-        key: _scaffoldKey,
-        resizeToAvoidBottomInset: false,
-        body: Container(
+      ),
+      key: _scaffoldKey,
+      resizeToAvoidBottomInset: false,
+      body: Container(
+        child: Padding(
+          padding: const EdgeInsets.all(8),
+          // color: Colors.pink[50],
           child: Padding(
-            padding: const EdgeInsets.all(8),
-            // color: Colors.pink[50],
-            child: Padding(
-                padding: EdgeInsets.all(16),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    TextFormField(
-                      controller: _phoneNumberController,
-                      decoration: const InputDecoration(
-                          labelText: 'Phone number (+xx xxx-xxx-xxxx)'),
-                      validator: (value) {
-                        if (value.isEmpty) {
-                          showSnackbar("Enter valid Number");
-                        }
-                        return null;
-                      },
-                    ),
-                    Container(
-                      padding: const EdgeInsets.symmetric(vertical: 30.0),
-                      alignment: Alignment.center,
-                      child: ConstrainedBox(
-                        constraints:
-                            BoxConstraints.tightFor(width: 180, height: 40),
-                        child: ElevatedButton(
-                          child: Text("Verify Number"),
-                          onPressed: () async {
-                            verifyPhoneNumber();
-                          },
-                          style: ElevatedButton.styleFrom(
-                            primary: Colors.yellow[700],
-                            side:
-                                BorderSide(color: Colors.yellow[900], width: 2),
-                          ),
+              padding: EdgeInsets.all(16),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  TextFormField(
+                    controller: _phoneNumberController,
+                    decoration: const InputDecoration(
+                        labelText: 'Phone number (+xx xxx-xxx-xxxx)'),
+                    validator: (value) {
+                      if (value.isEmpty) {
+                        showSnackbar("Enter valid Number");
+                      }
+                      return null;
+                    },
+                    style: TextStyle(color: Colors.white),
+                  ),
+                  Container(
+                    padding: const EdgeInsets.symmetric(vertical: 30.0),
+                    alignment: Alignment.center,
+                    child: ConstrainedBox(
+                      constraints:
+                          BoxConstraints.tightFor(width: 180, height: 40),
+                      child: ElevatedButton(
+                        child: Text("Verify Number"),
+                        onPressed: () async {
+                          verifyPhoneNumber();
+                        },
+                        style: ElevatedButton.styleFrom(
+                          primary: Colors.yellow[700],
+                          side: BorderSide(color: Colors.yellow[900], width: 2),
                         ),
                       ),
                     ),
-                    TextFormField(
-                      controller: _smsController,
-                      decoration:
-                          const InputDecoration(labelText: 'Verification code'),
-                    ),
-                    Container(
-                      padding: const EdgeInsets.only(top: 50.0),
-                      alignment: Alignment.center,
-                      child: ConstrainedBox(
-                        constraints:
-                            BoxConstraints.tightFor(width: 180, height: 40),
-                        child: ElevatedButton(
-                          onPressed: () async {
-                            signInWithPhoneNumber();
-                          },
-                          child: Text("Sign in"),
-                          style: ElevatedButton.styleFrom(
-                            primary: Colors.yellow[700],
-                            side:
-                                BorderSide(color: Colors.yellow[900], width: 2),
-                          ),
+                  ),
+                  TextFormField(
+                    controller: _smsController,
+                    decoration:
+                        const InputDecoration(labelText: 'Verification code'),
+                    style: TextStyle(color: Colors.white),
+                  ),
+                  Container(
+                    padding: const EdgeInsets.only(top: 50.0),
+                    alignment: Alignment.center,
+                    child: ConstrainedBox(
+                      constraints:
+                          BoxConstraints.tightFor(width: 180, height: 40),
+                      child: ElevatedButton(
+                        onPressed: () async {
+                          signInWithPhoneNumber();
+                        },
+                        child: Text("Sign in"),
+                        style: ElevatedButton.styleFrom(
+                          primary: Colors.yellow[700],
+                          side: BorderSide(color: Colors.yellow[900], width: 2),
                         ),
                       ),
                     ),
-                  ],
-                )),
-          ),
-        ));
+                  ),
+                ],
+              )),
+        ),
+      ),
+    );
   }
 }

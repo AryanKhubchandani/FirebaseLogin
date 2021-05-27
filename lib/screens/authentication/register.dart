@@ -24,24 +24,9 @@ class _RegisterState extends State<Register> {
         backgroundColor: Colors.yellow[700],
         elevation: 0.0,
         title: Text('Sign Up'),
-        actions: <Widget>[
-          TextButton.icon(
-            icon: Icon(
-              Icons.person,
-              color: Colors.yellow[900],
-            ),
-            label: Text(
-              "Sign In",
-              style: TextStyle(color: Colors.yellow[900]),
-            ),
-            onPressed: () {
-              widget.toggleView();
-            },
-          ),
-        ],
       ),
       body: Container(
-        padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 50.0),
+        padding: EdgeInsets.fromLTRB(50, 20, 50, 5),
         child: Form(
           key: _formKey,
           child: Column(
@@ -55,6 +40,7 @@ class _RegisterState extends State<Register> {
                 onChanged: (val) {
                   setState(() => email = val);
                 },
+                style: TextStyle(color: Colors.white),
               ),
               SizedBox(height: 20.0),
               TextFormField(
@@ -68,6 +54,7 @@ class _RegisterState extends State<Register> {
                 onChanged: (val) {
                   setState(() => password = val);
                 },
+                style: TextStyle(color: Colors.white),
               ),
               SizedBox(height: 50.0),
               ConstrainedBox(
@@ -95,7 +82,30 @@ class _RegisterState extends State<Register> {
               Text(
                 error,
                 style: TextStyle(color: Colors.red, fontSize: 20.0),
-              )
+              ),
+              Spacer(),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    "Already have an account?",
+                    style: TextStyle(color: Colors.white),
+                  ),
+                  TextButton.icon(
+                    icon: Icon(
+                      Icons.person,
+                      color: Colors.white,
+                    ),
+                    label: Text(
+                      "Sign In",
+                      style: TextStyle(color: Colors.white),
+                    ),
+                    onPressed: () {
+                      widget.toggleView();
+                    },
+                  ),
+                ],
+              ),
             ],
           ),
         ),
