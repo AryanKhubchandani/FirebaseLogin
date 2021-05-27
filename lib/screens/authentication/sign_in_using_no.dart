@@ -81,7 +81,7 @@ class _SignInNoState extends State<SignInNo> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.pink[50],
+        backgroundColor: Colors.yellow[700],
         appBar: AppBar(
           title: Text("Sign In using Number"),
           backgroundColor: Colors.brown,
@@ -109,13 +109,23 @@ class _SignInNoState extends State<SignInNo> {
                       },
                     ),
                     Container(
-                      padding: const EdgeInsets.symmetric(vertical: 15.0),
+                      padding: const EdgeInsets.symmetric(vertical: 30.0),
                       alignment: Alignment.center,
-                      child: ElevatedButton(
+                      child: ConstrainedBox(
+                        constraints:
+                            BoxConstraints.tightFor(width: 180, height: 40),
+                        child: ElevatedButton(
                           child: Text("Verify Number"),
                           onPressed: () async {
                             verifyPhoneNumber();
-                          }),
+                          },
+                          style: ElevatedButton.styleFrom(
+                            primary: Colors.yellow[700],
+                            side:
+                                BorderSide(color: Colors.yellow[900], width: 2),
+                          ),
+                        ),
+                      ),
                     ),
                     TextFormField(
                       controller: _smsController,
@@ -123,13 +133,23 @@ class _SignInNoState extends State<SignInNo> {
                           const InputDecoration(labelText: 'Verification code'),
                     ),
                     Container(
-                      padding: const EdgeInsets.only(top: 16.0),
+                      padding: const EdgeInsets.only(top: 50.0),
                       alignment: Alignment.center,
-                      child: ElevatedButton(
+                      child: ConstrainedBox(
+                        constraints:
+                            BoxConstraints.tightFor(width: 180, height: 40),
+                        child: ElevatedButton(
                           onPressed: () async {
                             signInWithPhoneNumber();
                           },
-                          child: Text("Sign in")),
+                          child: Text("Sign in"),
+                          style: ElevatedButton.styleFrom(
+                            primary: Colors.yellow[700],
+                            side:
+                                BorderSide(color: Colors.yellow[900], width: 2),
+                          ),
+                        ),
+                      ),
                     ),
                   ],
                 )),

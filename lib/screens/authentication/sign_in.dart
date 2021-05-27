@@ -1,5 +1,6 @@
 import 'package:firebase_login/screens/authentication/sign_in_using_no.dart';
 import 'package:firebase_login/screens/home/home.dart';
+import 'package:flutter_signin_button/flutter_signin_button.dart';
 import 'package:firebase_login/services/auth.dart';
 import 'package:flutter/material.dart';
 
@@ -22,9 +23,9 @@ class _SignInState extends State<SignIn> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.pink[50],
+      backgroundColor: Colors.yellow[700],
       appBar: AppBar(
-        backgroundColor: Colors.brown,
+        backgroundColor: Colors.yellow[700],
         elevation: 0.0,
         title: Text('Sign In'),
         actions: <Widget>[
@@ -66,36 +67,58 @@ class _SignInState extends State<SignIn> {
                   setState(() => password = val.trim());
                 },
               ),
-              SizedBox(height: 30.0),
-              ElevatedButton(
-                child: Text(
-                  " Sign In",
-                  style: TextStyle(color: Colors.white),
-                ),
-                onPressed: () async {
-                  if (_formKey.currentState.validate()) {
-                    dynamic result = await _auth.signInEnP(email, password);
-                    if (result == null) {
-                      setState(() => error =
-                          "Please check whether you are using correct credentials");
+              SizedBox(height: 50.0),
+              ConstrainedBox(
+                constraints: BoxConstraints.tightFor(width: 200, height: 50),
+                child: ElevatedButton(
+                  child: Text(
+                    " Sign In",
+                    style: TextStyle(color: Colors.white),
+                  ),
+                  onPressed: () async {
+                    if (_formKey.currentState.validate()) {
+                      dynamic result = await _auth.signInEnP(email, password);
+                      if (result == null) {
+                        setState(() => error =
+                            "Please check whether you are using correct credentials");
+                      }
                     }
-                  }
-                },
+                  },
+                  style: ElevatedButton.styleFrom(
+                    primary: Colors.yellow[700],
+                    side: BorderSide(color: Colors.yellow[900], width: 2),
+                  ),
+                ),
               ),
-              TextButton(
+              SizedBox(height: 30.0),
+              Text("-OR-"),
+              SizedBox(height: 20.0),
+              SignInButton(
+                Buttons.Google,
                 onPressed: () async {
                   await _auth.signInGoogle().then((userCredential) => {
                         setState(() => {userCredential})
                       });
                 },
-                child: Text("Sign In With Google"),
               ),
-              ElevatedButton.icon(
-                icon: Icon(Icons.person),
-                label: Text("Sign In using number"),
-                onPressed: () async {
-                  return SignInNo();
-                },
+              SizedBox(height: 10.0),
+              ConstrainedBox(
+                constraints: BoxConstraints.tightFor(width: 220, height: 35),
+                child: ElevatedButton.icon(
+                  icon: Icon(
+                    Icons.person,
+                    color: Colors.black,
+                  ),
+                  label: Text("Sign In using Number",
+                      style: TextStyle(color: Colors.black, fontSize: 14)),
+                  onPressed: () {
+                    Navigator.of(context).push(
+                        MaterialPageRoute(builder: (context) => SignInNo()));
+                  },
+                  style: ElevatedButton.styleFrom(
+                    primary: Colors.white,
+                  ),
+                ),
               ),
               SizedBox(height: 20.0),
               Text(

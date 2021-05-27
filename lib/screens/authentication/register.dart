@@ -19,15 +19,21 @@ class _RegisterState extends State<Register> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.pink[50],
+      backgroundColor: Colors.yellow[700],
       appBar: AppBar(
-        backgroundColor: Colors.brown,
+        backgroundColor: Colors.yellow[700],
         elevation: 0.0,
         title: Text('Sign Up'),
         actions: <Widget>[
           TextButton.icon(
-            icon: Icon(Icons.person),
-            label: Text("Sign In"),
+            icon: Icon(
+              Icons.person,
+              color: Colors.yellow[900],
+            ),
+            label: Text(
+              "Sign In",
+              style: TextStyle(color: Colors.yellow[900]),
+            ),
             onPressed: () {
               widget.toggleView();
             },
@@ -63,20 +69,27 @@ class _RegisterState extends State<Register> {
                   setState(() => password = val);
                 },
               ),
-              SizedBox(height: 30.0),
-              ElevatedButton(
-                child: Text(
-                  "Register",
-                  style: TextStyle(color: Colors.white),
-                ),
-                onPressed: () async {
-                  if (_formKey.currentState.validate()) {
-                    dynamic result = await _auth.registerEnP(email, password);
-                    if (result == null) {
-                      setState(() => error = "Enter a valid Email");
+              SizedBox(height: 50.0),
+              ConstrainedBox(
+                constraints: BoxConstraints.tightFor(width: 200, height: 50),
+                child: ElevatedButton(
+                  child: Text(
+                    "Register",
+                    style: TextStyle(color: Colors.white),
+                  ),
+                  onPressed: () async {
+                    if (_formKey.currentState.validate()) {
+                      dynamic result = await _auth.registerEnP(email, password);
+                      if (result == null) {
+                        setState(() => error = "Enter a valid Email");
+                      }
                     }
-                  }
-                },
+                  },
+                  style: ElevatedButton.styleFrom(
+                    primary: Colors.yellow[700],
+                    side: BorderSide(color: Colors.yellow[900], width: 2),
+                  ),
+                ),
               ),
               SizedBox(height: 20.0),
               Text(
