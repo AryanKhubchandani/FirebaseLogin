@@ -30,12 +30,21 @@ class _RegisterState extends State<Register> {
       ),
       resizeToAvoidBottomInset: false,
       body: Container(
-        padding: EdgeInsets.fromLTRB(50, 20, 50, 5),
+        padding: EdgeInsets.fromLTRB(50, 10, 50, 5),
         child: Form(
           key: _formKey,
           child: Column(
             children: <Widget>[
-              SizedBox(height: 40.0),
+              Padding(
+                padding: const EdgeInsets.all(15.0),
+                child: CircleAvatar(
+                  radius: 80,
+                  backgroundImage: AssetImage(
+                    'images/logo.jpg',
+                  ),
+                ),
+              ),
+              SizedBox(height: 10.0),
               TextFormField(
                 decoration: InputDecoration(
                   labelText: "Email",
@@ -55,7 +64,7 @@ class _RegisterState extends State<Register> {
                 },
                 style: TextStyle(color: Colors.white),
               ),
-              SizedBox(height: 20.0),
+              SizedBox(height: 15.0),
               TextFormField(
                 decoration: InputDecoration(
                   labelText: "Password",
