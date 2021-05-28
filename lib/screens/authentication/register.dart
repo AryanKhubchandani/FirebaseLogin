@@ -30,7 +30,7 @@ class _RegisterState extends State<Register> {
       ),
       resizeToAvoidBottomInset: false,
       body: Container(
-        padding: EdgeInsets.fromLTRB(50, 10, 50, 5),
+        padding: EdgeInsets.fromLTRB(40, 5, 40, 5),
         child: Form(
           key: _formKey,
           child: Column(
@@ -38,9 +38,13 @@ class _RegisterState extends State<Register> {
               Padding(
                 padding: const EdgeInsets.all(15.0),
                 child: CircleAvatar(
-                  radius: 80,
-                  backgroundImage: AssetImage(
-                    'images/logo.jpg',
+                  radius: 85,
+                  backgroundColor: Colors.yellow[800],
+                  child: CircleAvatar(
+                    radius: 80,
+                    backgroundImage: AssetImage(
+                      'images/logo.jpg',
+                    ),
                   ),
                 ),
               ),
@@ -112,7 +116,10 @@ class _RegisterState extends State<Register> {
               SizedBox(height: 20.0),
               Text(
                 error,
-                style: TextStyle(color: Colors.red, fontSize: 20.0),
+                style: TextStyle(
+                  color: Colors.red,
+                  fontSize: 12,
+                ),
               ),
               Spacer(),
               Row(

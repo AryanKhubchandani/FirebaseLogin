@@ -7,12 +7,22 @@ class Home extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Logged In Screen"),
-        backgroundColor: Colors.black54,
+        title: Text(
+          "LOGGED IN SCREEN",
+          style: TextStyle(color: Colors.white70, fontSize: 28),
+        ),
+        elevation: 0.0,
+        backgroundColor: Colors.yellow[700],
         actions: <Widget>[
           TextButton.icon(
-            icon: Icon(Icons.person),
-            label: Text("Log out"),
+            icon: Icon(
+              Icons.person,
+              color: Colors.white,
+            ),
+            label: Text(
+              "Log out",
+              style: TextStyle(color: Colors.white),
+            ),
             onPressed: () async {
               await _auth.signOut();
             },
@@ -20,17 +30,28 @@ class Home extends StatelessWidget {
         ],
       ),
       body: Container(
-          padding: EdgeInsets.all(80),
-          alignment: Alignment.center,
-          child: Text(
-            "You have successfully logged in!",
-            style: TextStyle(
-              color: Colors.brown,
-              fontWeight: FontWeight.bold,
-              fontSize: 40,
+        padding: EdgeInsets.all(80),
+        alignment: Alignment.center,
+        child: Column(
+          children: [
+            Image(
+              image: AssetImage('images/mello.png'),
             ),
-          )),
-      backgroundColor: Colors.pink[50],
+            Container(
+              padding: EdgeInsets.fromLTRB(12, 5, 12, 5),
+              child: Text(
+                "You have successfully logged in!",
+                style: TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 40,
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+      backgroundColor: Colors.yellow[700],
     );
   }
 }

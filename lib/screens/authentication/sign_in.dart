@@ -1,6 +1,4 @@
 import 'package:firebase_login/screens/authentication/sign_in_using_no.dart';
-import 'package:firebase_login/screens/home/home.dart';
-import 'package:flutter_signin_button/flutter_signin_button.dart';
 import 'package:firebase_login/services/auth.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -35,7 +33,7 @@ class _SignInState extends State<SignIn> {
       ),
       resizeToAvoidBottomInset: false,
       body: Container(
-        padding: EdgeInsets.fromLTRB(50, 10, 50, 5),
+        padding: EdgeInsets.fromLTRB(40, 5, 40, 5),
         child: Form(
           key: _formKey,
           child: Column(
@@ -43,8 +41,8 @@ class _SignInState extends State<SignIn> {
               Padding(
                 padding: const EdgeInsets.all(15.0),
                 child: CircleAvatar(
-                  radius: 81,
-                  backgroundColor: Colors.yellow[900],
+                  radius: 85,
+                  backgroundColor: Colors.yellow[800],
                   child: CircleAvatar(
                     radius: 80,
                     backgroundImage: AssetImage(
@@ -150,7 +148,7 @@ class _SignInState extends State<SignIn> {
                 constraints: BoxConstraints.tightFor(width: 200, height: 40),
                 child: ElevatedButton.icon(
                   icon: FaIcon(
-                    FontAwesomeIcons.phone,
+                    FontAwesomeIcons.phoneAlt,
                     color: Colors.white,
                   ),
                   label: Text("Sign In using Number",
@@ -165,10 +163,13 @@ class _SignInState extends State<SignIn> {
                   ),
                 ),
               ),
-              SizedBox(height: 10.0),
+              SizedBox(height: 18.0),
               Text(
                 error,
-                style: TextStyle(color: Colors.red, fontSize: 20.0),
+                style: TextStyle(
+                  color: Colors.red,
+                  fontSize: 12,
+                ),
               ),
               Spacer(),
               Row(
