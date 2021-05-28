@@ -43,9 +43,13 @@ class _SignInState extends State<SignIn> {
               Padding(
                 padding: const EdgeInsets.all(15.0),
                 child: CircleAvatar(
-                  radius: 80,
-                  backgroundImage: AssetImage(
-                    'images/logo.jpg',
+                  radius: 81,
+                  backgroundColor: Colors.yellow[900],
+                  child: CircleAvatar(
+                    radius: 80,
+                    backgroundImage: AssetImage(
+                      'images/logo.jpg',
+                    ),
                   ),
                 ),
               ),
